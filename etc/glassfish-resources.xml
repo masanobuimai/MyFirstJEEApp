@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+    "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+  <jdbc-connection-pool name="jdbc/test-pool" res-type="java.sql.Driver"
+                        driver-classname="org.apache.derby.jdbc.EmbeddedDriver">
+    <property name="URL" value="jdbc:derby:myDB;create=true"/>
+    <!--
+    <property name="URL" value="jdbc:derby://localhost:1527/sample"/>
+    <property name="serverName" value="localhost"/>
+    <property name="PortNumber" value="1527"/>
+    <property name="DatabaseName" value="sample"/>
+    <property name="User" value="app"/>
+    <property name="Password" value="app"/>
+    -->
+  </jdbc-connection-pool>
+  <jdbc-resource jndi-name="jdbc/test-ds" pool-name="jdbc/test-pool"/>
+</resources>

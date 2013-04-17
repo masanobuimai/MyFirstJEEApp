@@ -5,6 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="MyFirstJEEApp" />
+          <element id="jpa-descriptors" facet="MyFirstJEEApp/jpa/JPA" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="MyFirstJEEApp/web/Web" />
