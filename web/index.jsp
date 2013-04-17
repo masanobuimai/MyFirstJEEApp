@@ -6,5 +6,9 @@
 </head>
 <body>
 hello world.
+<ul>
+    <li><a href="foo">foo</a></li>
+    <li><a href="bar">bar</a></li>
+</ul>
 </body>
 </html>
