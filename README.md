@@ -46,3 +46,9 @@ MyFirstJEEApp
   - @EJB を @Inject に変える（@EJBのままでも使えた）
 - **CDIって使った方がいいのかよくわからん。(´･ω･`)**
 
+## はじめてのPrimFaces
+- Project StructureのModule->Web->AddでPrimFacesを追加（ライブラリのダウンロード先は ./lib でいいや）
+  - とってきたPrimFacesのバージョンは 3.4.1 （これが最新なのかどうかは知らない）
+  - scopeがcompileで設定されるので，それはそのまま
+  - artifactにPrimFacesを加える（FIXボタンを押せば，勝手に ./WEB-INF/lib に放り込まれる）
+- コンテンツはNetBeansのサンプルの丸パクリ
