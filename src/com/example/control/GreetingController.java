@@ -1,8 +1,9 @@
 package com.example.control;
 
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.inject.Model;
+import javax.inject.Named;
 
-@ManagedBean(name = "greeting")
+@Model @Named(value = "greeting")
 public class GreetingController {
     public String getMessage() {
         return "‚±‚ñ‚É‚¿‚Í¢ŠE";

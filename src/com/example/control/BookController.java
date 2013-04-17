@@ -4,10 +4,11 @@ import com.example.entity.Book;
 import com.example.service.BookService;
 
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.inject.Model;
+import javax.inject.Named;
 import java.util.List;
 
-@ManagedBean(name = "book")
+@Model @Named(value = "book")
 public class BookController {
     @EJB
     private BookService bookService;

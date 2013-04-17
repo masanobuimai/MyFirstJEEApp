@@ -26,7 +26,7 @@ MyFirstJEEApp
 - JPA EntityもJPAツールウィンドウから作るとややこしいことになるので，普通にクラスとして作る
 - **そういえば，JPA Entityの単体テストってどうやってやるんだろう？**
 
-## はじめてのEJB3.0
+## はじめてのEJB3.1
 - EJB facetは要らない（EJB3.0だからかな？）
 - 普通のクラスを作る感覚で，適当な場所にEJB3のセッションビーンを作る（statelessでいいでしょ）
 - それはそうと，@PersistenceContext の unitName って補完効かないのよね。:-(
@@ -38,4 +38,11 @@ MyFirstJEEApp
 - index.jspを消して，代わりにindex.xhtmlを作る
 - まずはJSFの管理ビーンを作ってみる
 
+## はじめてのCDI1.0
+- Project StructureのModuleにCDI Facetを追加しなくても良い（javaee-api-6.0.jarに含まれているし，ムリに追加するのが難しい）
+  - 要るのかどうかわからないけど，./web/WEB-INF/beans.xml を追加しとく（消したらエラーになったから，要るんだこれ）
+- JSFの管理ビーンをCDIに変えていく
+  - @ManagedBean を @Model @Name(value="...") に変えていく（@Model を消したら，動いているようで動かなくなった）
+  - @EJB を @Inject に変える（@EJBのままでも使えた）
+- **CDIって使った方がいいのかよくわからん。(´･ω･`)**
 
