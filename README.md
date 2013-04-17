@@ -27,3 +27,7 @@ MyFirstJEEApp
 - **そういえば，JPA Entityの単体テストってどうやってやるんだろう？**
 
 ## はじめてのEJB3.0
+- EJB facetは要らない（EJB3.0だからかな？）
+- 普通のクラスを作る感覚で，適当な場所にEJB3のセッションビーンを作る（statelessでいいでしょ）
+- それはそうと，@PersistenceContext の unitName って補完効かないのよね。:-(
+

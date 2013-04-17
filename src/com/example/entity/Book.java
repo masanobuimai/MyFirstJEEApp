@@ -39,4 +39,15 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Book{");
+        sb.append("description='").append(description).append('\'');
+        sb.append(", id=").append(id);
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", price=").append(price);
+        sb.append('}');
+        return sb.toString();
+    }
 }

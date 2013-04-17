@@ -1,5 +1,8 @@
 package example.web;
 
+import com.example.service.BookService;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +13,13 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "foo", urlPatterns = { "/foo" })
 public class FooServlet extends HttpServlet {
+    @EJB
+    private BookService bookService;
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        bookService.addBook();
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<html>");
