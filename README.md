@@ -31,3 +31,11 @@ MyFirstJEEApp
 - 普通のクラスを作る感覚で，適当な場所にEJB3のセッションビーンを作る（statelessでいいでしょ）
 - それはそうと，@PersistenceContext の unitName って補完効かないのよね。:-(
 
+## はじめてのJSF2.2
+- Project StructureのModule->Web->AddでJSFを追加（faceletはEnabledにしとく）
+  - 「JSFのライブラリ無いよ」と言われるが javaee-api-6.0.jar を設定済みなので無視して言い（エラーにならない）
+- web.xmlにFacesServletなどのJSFの設定を加える
+- index.jspを消して，代わりにindex.xhtmlを作る
+- まずはJSFの管理ビーンを作ってみる
+
+
