@@ -1,0 +1,7 @@
+<Resource id="jdbc/test-ds" type="DataSource">
+  JdbcDriver org.hsqldb.jdbcDriver
+  JdbcUrl jdbc:hsqldb:file:testdb
+  UserName sa
+  Password
+  JtaManaged true
+</Resource>

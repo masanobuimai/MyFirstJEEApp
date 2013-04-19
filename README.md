@@ -69,3 +69,58 @@ MyFirstJEEApp
   - EclipseLinkの場合は，eclipselink.logging.level.sqlをFINEに，eclipselink.logging.parametersをtrueで良い感じにSQLがログされる
   - [EclipseLink/Examples/JPA/Logging](http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging)
 - glassfishでカバレッジ取る場合は，Coverage Runnerを **JaCoCo** にしないとダメだった
+
+
+## Glassfishの代わりにTomEEに載せてみる
+- TomEEはGlassfishと違い，hsqldbとOpenJPAが含まれているので，メタデータもその辺に合わせる
+  - データソースは，META-INF/openejb.xml に記述しておき，warファイルに一緒にアーカイブするだけで良い（楽ちん）
+  - persistence.xmlはそのままだとスキーマを生成してくれないので，OpenJPAでEclipseLinkの"ddl-generataion"に相当するプロパティ
+    (openjpa.jdbc.SynchronizeMappings) を設定しておく
+  - persistence.xmlにEclipseLinkとOpenJPAの設定値が混在していても大丈夫そう。
+  - Project StructureのJPA facetにある "Default JPA provider" に大した意味はなさそう（<No Default>でも動いた）
+
+- TomEEのhsqldbの実体は，$TOMEE_HOME/bin にできたっぽい
+- TomEEだと，Coverage Runnerが **IDEA** でも平気だった（Samplingだけじゃなく，Tracingもできる）
+
+### Glassfishと比べたTomEEの地味に良いところ
+- Setting->Application Servers で登録したときの Libraries が充実している
+- TomEEだと以下のライブラリが登録される
+  - **javaee-api-6.0.5-tomcat.jar** （これ重要）
+  - jsp-api.jar
+  - servlet-api.jar
+- Glassfishの場合，こうなる（JSFとかCDIとかJPAとか肝心なのが足りない）
+  - javax.ejb.jar
+  - javax.servlet-api.jar
+  - javax.servlet.jsp-api.jar
+
+- ちなみに，NetBeansの「ツール→サーバー」に登録されているGlassfishのライブラリは以下の通り。
+  （NetBeans，というかJavaEE SDKか...ライブラリ分割しすぎ）
+  - javax.servlet-api.jar
+  - javax.servlet.jsp-api.jar
+  - javax.persistence.jar
+  - webservices-api-osgi.jar
+  - javax.servlet.jsp.jstl-api.jar
+  - jersey-core.jar
+  - javax.security.jacc.jar
+  - jaxm-api.jar
+  - javax.security.auth.message.jar
+  - javax.transaction.jar
+  - javax.enterprise.deploy.jar
+  - javax.annotation.jar
+  - webservices-osgi.jar
+  - javax.faces.jar
+  - jaxb-osgi.jar
+  - javax.resource.jar
+  - javax.management.j2ee.jar
+  - jaxb-api-osgi.jar
+  - javax.ejb.jar
+  - javax.el-api.jar
+  - weld-osgi-bundle.jar
+  - javax.mail.jar
+  - javax.jms.jar
+  - bean-validator.jar
+
+何が言いたいのかというと，IntelliJでJavaEEプロジェクトを作成したときに，Project Structure->Modules->DependenciesでAdd->Library->Application Server LibrariesでGlassfishを指定しても，いろいろライブラリが足りなくて困る（ホントに欲しいのは，javaee-api-6.0.jarみたいな全部入りのやつ）。
+
+そうゆう意味ではNetBeansは「ワカッテル」...というかズルいｗ
+
